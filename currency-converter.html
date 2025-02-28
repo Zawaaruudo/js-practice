@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <link rel="stylesheet" href="currency-converter.css">
+</head>
+<body>
+  <h1>Currency Converter</h1>
+  
+  <label for="amount">Amount: </label>
+  <input type="number" name="amount" id="amount">
+  
+  <fieldset>
+    <label for="source-currency">Source Currency: </label>
+    <select name="source-currency" id="source-currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="BGN">BGN</option>
+      <option value="CAD">CAD</option>
+      <option value="AUD">AUD</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <label for="target-currency">Target Currency: </label>
+    <select name="target-currency" id="target-currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="BGN">BGN</option>
+      <option value="CAD">CAD</option>
+      <option value="AUD">AUD</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <button id="convert-btn">Convert</button>
+    
+    <p>Converted Amount: <span id="result">0</span></p>
+  </fieldset>
+
+  <script src="currency-converter.js"></script>
+</body>
+</html>
