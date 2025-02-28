@@ -3,6 +3,18 @@ const startButton = document.getElementById('start-game');
 const scoreDisplay = document.getElementById('score');
 let score = 0;
 let gameInterval;
+
+const showMole = (mole) => {
+  mole.style.bottom = "0px"; // Move mole up
+  mole.style.display = "block";
+
+  setTimeout(() => {
+    mole.style.bottom = "-10px"; // Move mole down
+    mole.style.display = "none";
+  }, 700);
+}
+
+
 const startGame = () => {
   score = 0;
 
@@ -16,11 +28,13 @@ const startGame = () => {
 
     let mole = moles[randomIndex];
 
-    mole.style.display = "block";
+    mole.style.bottom = "0px";
+
+    mole.style.display = showMole(mole);
 
     setTimeout(() => {
 
-      mole.style.display = "none";
+      mole.style.bottom = "-70px";
     }, 700);
   }, 1000);
 
@@ -29,11 +43,12 @@ const startGame = () => {
     alert(`Game Over! Your score: ${score}`);
   }, 30000);
 }
+
 startButton.addEventListener("click", startGame);
 moles.forEach(mole => {
   mole.addEventListener("click", () => {
     score++;
     scoreDisplay.innerText = score;
-    mole.style.display = "none"; // Hide the mole after it's clicked
+    mole.style.bottom = "-70px";
   });
 });
