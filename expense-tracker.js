@@ -25,7 +25,7 @@ const updateUI = (filteredExpenses = expenses) => {
 
     let li = document.createElement("li");
     li.innerHTML = `
-      <strong>${expense.name}</strong> - $${expense.amount} 
+      <strong>${expense.name}</strong>  $${expense.amount} 
       (${expense.category})<br>
       <small>${expense.date}</small>
       <button onclick="editExpense(${index})">✏️</button>
@@ -63,6 +63,7 @@ const deleteExpense = (index) => {
 };
 
 // Edit Expense
+
 const editExpense = (index) => {
   let expense = expenses[index];
 
@@ -72,19 +73,46 @@ const editExpense = (index) => {
 
   addButton.textContent = "Update Expense";
 
+  // Save the updated expense when the button is clicked
   addButton.onclick = () => {
+    let name = nameInput.value.trim();
+    let amount = parseFloat(amountInput.value);
+    let category = categoryInput.value;
+    let date = new Date().toLocaleString();
+
+    // Check for valid amount
+    if (name === "" || isNaN(amount) || amount <= 0 || category === "") {
+      return;
+    }
+
     expenses[index] = {
-      name: nameInput.value,
-      amount: parseFloat(amountInput.value),
-      category: categoryInput.value,
-      date: new Date().toLocaleString(),
+      name,
+      amount,
+      category,
+      date,
     };
 
     updateUI();
     addButton.textContent = "Add Expense";
-    addButton.onclick = addExpense;
+    addButton.onclick = () => {
+      let name = nameInput.value.trim();
+      let amount = parseFloat(amountInput.value);
+      let category = categoryInput.value;
+      let date = new Date().toLocaleString();
+
+      if (name === "" || isNaN(amount) || amount <= 0 || category === "") return;
+
+      let expense = { name, amount, category, date };
+      expenses.push(expense);
+      updateUI();
+
+      nameInput.value = "";
+      amountInput.value = "";
+    };
   };
 };
+
+
 
 // Save to localStorage
 const saveToLocalStorage = () => {
