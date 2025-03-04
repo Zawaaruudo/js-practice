@@ -1,9 +1,9 @@
 const categories = {
-  electronics: ['laptop', 'phone', 'headphones', 'keyboard', 'mouse', 'watch', 'TV'],
-  groceries: ['apple', 'banana', 'bread', 'milk', 'eggs', 'oats', 'chicken', 'beef'],
-  furniture: ['sofa', 'table', 'chair', 'wardrobe', 'bed', 'nightstand', 'bookshelf'],
-  clothing: ['shirt', 'pants', 'shoes', 'socks', 'sweater', 'underwear', 'coat'],
-  hygiene: ['toothpaste', 'toothbrush', 'shampoo', 'showergel', 'soap', 'wet wipes']
+  electronics: ['laptop', 'phone', 'headphones', 'keyboard', 'mouse', 'watch', 'TV', 'trimmer'],
+  groceries: ['apple', 'banana', 'bread', 'milk', 'eggs', 'oats', 'chicken', 'beef', 'pizza'],
+  furniture: ['sofa', 'table', 'chair', 'wardrobe', 'bed', 'nightstand', 'bookshelf', 'carpet'],
+  clothing: ['shirt', 'pants', 'shoes', 'socks', 'sweater', 'underwear', 'coat', 'jacket', 'tank top'],
+  hygiene: ['toothpaste', 'toothbrush', 'shampoo', 'showergel', 'soap', 'wet wipes', 'gum']
 };
 document.getElementById('categorize').addEventListener('click', () => {
   const productInput = document.getElementById('product');
