@@ -28,3 +28,22 @@ document.getElementById('categorize').addEventListener('click', () => {
   document.getElementById('productDisplay').textContent = productName;
   document.getElementById('categoryDisplay').textContent = categoryFound;
 });
+// Function to add a new category and product
+document.getElementById('addCategory').addEventListener("click", () => {
+  const newCategoryInput = document.getElementById('newCategory');
+  const newProductInput = document.getElementById('newProduct');
+  const newCategory = newCategoryInput.trim().toLowerCase();
+  const newProduct = newProductInput.trim().toLowerCase();
+  // Validate inputs
+  if (!newCategory || !newProduct) {
+    alert("Please enter both category and a product!");
+    return;
+  }
+  if (!categories[newCategory]) {
+    categories[newCategory] = [];
+  }
+  categories[newCategory].push(newProduct);
+  newCategory.value = "";
+  newProduct.value = "";
+  alert(`Category: "${newCategory}" with product "${newProduct}" has been added.`);
+});
