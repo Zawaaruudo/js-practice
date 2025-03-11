@@ -511,6 +511,8 @@ function displayFact(countryCode) {
 
   document.getElementById('country-name').textContent = countryName;
   document.getElementById('country-fact').textContent = fact;
+  document.getElementById('fact-section').scrollIntoView({ behavior: "smooth" });
+
 }
 
 // Event delegation for flag clicks
@@ -522,3 +524,19 @@ document.getElementById('flags-container').addEventListener('click', (event) => 
 
 // Create flags when the page loads
 window.addEventListener('DOMContentLoaded', createFlags);
+const backToTopBtn = document.getElementById('back-to-top');
+
+// Show button when scrolling down
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) { // Show after scrolling 300px
+    backToTopBtn.style.display = 'block';
+  } else {
+    backToTopBtn.style.display = 'none';
+  }
+});
+
+// Scroll to top when button is clicked
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
