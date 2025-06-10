@@ -20,7 +20,7 @@ sumArray([1, 2, 3]); // Output: 6
 sumArray([-1, 1, 2]); // Output: 2
 sumArray([]); // Output: 0
 
-//array length 
+//array length
 const stringLengths = (arr) => {
   let strArr = [];
   for (let i = 0; i < arr.length; i++) {
@@ -115,6 +115,7 @@ console.log(filterPrimeNumbers([4, 6, 8, 10])); // Output: []
 console.log(filterPrimeNumbers([])); // Output: []
 */
 
+/*
 const findLongestWord = (sentence) => {
   if (!sentence) return ""; // Handle empty input
   const words = sentence.split(" "); // Split sentence into words
@@ -160,3 +161,218 @@ console.log(findUniqueElements([1, 2, 3, 2, 4, 5, 1])); // Output: [3, 4, 5]
 console.log(findUniqueElements([5, 5, 6, 7, 8, 8])); // Output: [6, 7]
 console.log(findUniqueElements([1, 1, 1])); // Output: []
 console.log(findUniqueElements([])); // Output: []
+*/
+
+// Find the mode:
+/*
+const findMode = (arr) => {
+  const freqCounter = {}; // Step 1: Create frequency counter
+
+  // Count occurrences of each number
+  arr.forEach(num => {
+    freqCounter[num] = (freqCounter[num] || 0) + 1;
+  });
+
+  let mode = null;
+  let maxCount = 0;
+
+  // Step 2: Find the number with the highest frequency
+  for (let num in freqCounter) {
+    if (freqCounter[num] > maxCount) {
+      maxCount = freqCounter[num];
+      mode = Number(num); // Convert key back to a number
+    }
+  }
+
+  return mode; // Step 3: Return the mode
+};
+
+// Example usage
+const surveyData = [1, 3, 3, 7, 8, 3, 2, 7, 7, 7, 8, 8, 8, 7, 8, 8];
+console.log(findMode(surveyData)); // Output: 8 (or another valid mode)
+*/
+
+/*
+// Find count occurences
+
+const occurenceCount = (arr) => {
+  const freqCounter = {};
+
+  arr.forEach(num => {
+    // If the number is already in the object, increase the count
+    //Otherwise set it to 1
+    freqCounter[num] = (freqCounter[num] || 0) + 1;
+  });
+  return freqCounter;
+};
+console.log(occurenceCount([1, 2, 2, 3, 3, 3, 4]));
+*/
+
+/*
+class Student {
+  constructor(name, id, grade) {
+    this.name = name;
+    this.id = id;
+    this.grade = grade;
+  }
+  getGradeLetter() {
+    if (this.grade >= 93 && this.grade <= 100) return 'A';
+    if (this.grade >= 90 && this.grade <= 92) return 'A-';
+    if (this.grade >= 87 && this.grade <= 89) return 'B+';
+    if (this.grade >= 83 && this.grade <= 86) return 'B';
+    if (this.grade >= 80 && this.grade <= 82) return 'B-';
+    if (this.grade >= 77 && this.grade <= 79) return 'C+';
+    if (this.grade >= 73 && this.grade <= 76) return 'C';
+    if (this.grade >= 70 && this.grade <= 72) return 'C-';
+    if (this.grade >= 67 && this.grade <= 69) return 'D+';
+    if (this.grade >= 60 && this.grade <= 66) return 'D';
+    if (this.grade <= 59) return 'F';
+  }
+};
+class ClassRoster {
+  constructor() {
+    this.students = [];
+  }
+
+  addStudent(name, id, grade) {
+    if (this.students.some(student => student.id === id)) {
+      console.log(`Student with ID ${id} already exists.`);
+      return;
+    }
+    this.students.push(new Student(name, id, grade));
+  }
+
+  removeStudent(id) {
+    this.students = this.students.filter(student => student.id !== id);
+  }
+
+  getStudentRecord(id) {
+    const student = this.students.find(student => student.id === id);
+    if (student) {
+      console.log(`Name: ${student.name}, ID: ${student.id}, Grade: ${student.grade}, Letter Grade: ${student.getGradeLetter()}`);
+    } else {
+      console.log(`Student with ID ${id} not found.`);
+    }
+  }
+
+  getAverageGrade() {
+    if (this.students.length === 0) return 0;
+    const totalGrade = this.students.reduce((sum, student) => sum + student.grade, 0);
+    return (totalGrade / this.students.length).toFixed(2);
+  }
+}
+const roster = new ClassRoster();
+roster.addStudent("Alice", 101, 85);
+roster.addStudent("Dylan", 102, 75);
+roster.addStudent("Chloe", 103, 93);
+
+roster.getStudentRecord(103);
+console.log("Average Score:", roster.getAverageGrade());
+*/
+
+//Automobile class 
+
+/*
+class Automobile {
+  constructor(manufacturer, model, year) {
+    this._manufacturer = manufacturer;
+    this._model = model;
+    this._year = year;
+  }
+  // Getters
+  get manufacturer() {
+    return this._manufacturer;
+  }
+  get model() {
+    return this._model;
+  }
+  get year() {
+    return this._year;
+  }
+  // Setters
+  set manufacturer(newManufacturer) {
+    this._model = newManufacturer;
+  }
+  set year(newYear) {
+    this._year = newYear;
+  }
+  // Returns a formatted description
+  getDescription() {
+    return `${this._year} ${this._manufacturer} ${this._model}`;
+  }
+  // Returns the age of the automobile
+  getAge() {
+    const currentYear = new Date().getFullYear();
+    return currentYear - this._year;
+  }
+}
+const myCar = new Automobile("Chevrolet", "Impala", 1957);
+console.log(myCar.getDescription());
+console.log(`Age: ${myCar.getAge()} years`);
+
+*/
+
+// Log all pairs
+// Array of numbers to check for pairs that sum to 8
+const nums = [1, 7, 2, 6, 3, 5, 4, 4];
+
+// Function to find and return all unique pairs in the array that sum to 8
+const logPairsThatSumTo8 = (array) => {
+  // Initialize an empty array to store the resulting pairs
+  const pairs = [];
+
+  // Outer loop: iterate through each element in the array
+  for (let i = 0; i < array.length; i++) {
+    // Inner loop: check all elements that come after the current one
+    for (let j = i + 1; j < array.length; j++) {
+      // If the sum of the current pair is 8, add it to the results
+      if (array[i] + array[j] === 8) {
+        pairs.push([array[i], array[j]]);
+      }
+    }
+  }
+
+  // Return the list of valid pairs
+  return pairs;
+};
+
+// Log the result to the console
+console.log(logPairsThatSumTo8(nums));
+// Output: [ [ 1, 7 ], [ 2, 6 ], [ 3, 5 ], [ 4, 4 ] ]
+
+
+
+// Version using Set 
+const findUniquePairsThatSumTo8 = (arr) => {
+  // A Set to track numbers we've seen so far
+  const seen = new Set();
+
+  // A Set to store unique pairs as strings (e.g., "1,7")
+  const pairs = new Set();
+
+  // Loop through each number in the array
+  for (const num of arr) {
+    // Calculate the number needed to reach 8
+    const complement = 8 - num;
+
+    // If we've already seen the complement, we have a valid pair
+    if (seen.has(complement)) {
+      // Sort the pair to avoid duplicates like [7,1] and [1,7]
+      const sortedPair = [num, complement].sort((a, b) => a - b).join(',');
+
+      // Add the stringified pair to the Set (only unique pairs will be kept)
+      pairs.add(sortedPair);
+    }
+
+    // Add the current number to the 'seen' set
+    seen.add(num);
+  }
+
+  // Convert the string pairs back into arrays of numbers
+  return Array.from(pairs).map(pair => pair.split(',').map(Number));
+};
+
+// Example usage:
+const numbers = [1, 7, 2, 6, 3, 5, 4, 4];
+console.log(findUniquePairsThatSumTo8(numbers));
+// Output: [ [1, 7], [2, 6], [3, 5], [4, 4] ]
